@@ -1,0 +1,19 @@
+<div class="container">
+  <div *ngIf="!selected">
+    <span *ngFor="let workout of workouts">{{workout.date}}</span>
+  </div>
+  <div class="container" *ngIf="isSelected">
+    <h2 class="date">{{selected.date | date}}</h2>
+    <div class="exercise-container" *ngFor="let exercise of selected.exercises">
+      <div class="set-box">
+        <span *ngFor="let set of exercise.sets">
+          <mat-checkbox [checked]="set.complete"></mat-checkbox>
+        </span>
+      </div>
+
+      <div class="exercise-box">
+        {{exercise.name | uppercase}} {{exercise.weight}} X {{exercise.reps}}
+      </div>
+    </div>
+  </div>
+</div>
